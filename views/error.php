@@ -4,7 +4,6 @@
 
 <h3>Vous pouvez toujours essayer les options suivantes</h3>
 
-
 <div class="controls">
     <div class="controls-row">
         <div class="control-group">
@@ -13,7 +12,6 @@
     </div>
     <div class="controls-row">
         <div class="control-group">
-
             <?php echo Bootstrap::button("Retourner ou vous étiez", NULL, Request::initial()->uri(), "warning") ?>
         </div>
     </div>    

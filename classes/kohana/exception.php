@@ -3,7 +3,9 @@
 defined('SYSPATH') or die('No direct access');
 
 /**
- * Custom exception handler
+ * Custom exception handler.
+ * 
+ * Copy this file in your own app folder.
  * 
  * @package Error
  * @category Exception
@@ -13,7 +15,7 @@ defined('SYSPATH') or die('No direct access');
 class Kohana_Exception extends Kohana_Kohana_Exception {
 
     public static function handler(Exception $e) {
-        
+
         if (Kohana::$environment === Kohana::DEVELOPMENT) {
             return parent::handler($e);
         }
@@ -22,8 +24,7 @@ class Kohana_Exception extends Kohana_Kohana_Exception {
 
         try {
 
-            $params = array
-                (
+            $params = array(
                 'action' => 500,
                 'message' => rawurlencode($e->getMessage())
             );
