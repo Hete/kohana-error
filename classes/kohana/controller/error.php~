@@ -13,16 +13,16 @@ defined('SYSPATH') or die('No direct access');
 class Kohana_Controller_Error extends Controller_Template {
 
     /**
-     * Metas
-     * @var type 
-     */
-    protected $title, $description, $keywords;
-
-    /**
      *
      * @var View
      */
     protected $content = "error";
+
+    /**
+     *
+     * @var string 
+     */
+    private $message;
 
     public function before() {
 
@@ -34,10 +34,10 @@ class Kohana_Controller_Error extends Controller_Template {
         $this->title = 'error.' . (int) $this->request->action() . '.title';
 
         // Default message is based on error status
-        $this->description = 'error.' . (int) $this->request->action() . '.message';
+        $this->message = 'error.' . (int) $this->request->action() . '.message';
 
-        if ($description = rawurldecode($this->request->param('description'))) {
-            $this->description = $description;
+        if ($message = rawurldecode($this->request->param('message'))) {
+            $this->message = $message;
         }
 
         $this->response->status((int) $this->request->action());
@@ -59,27 +59,24 @@ class Kohana_Controller_Error extends Controller_Template {
 
     /**
      * Service Unavailable.
+     * 
+     * Un mail est envoyé aux administrateurs de SaveInTeam.
      */
     public function action_503() {
-        
     }
 
     /**
      * Internal Server Error.
+     * 
+     * Un mail est envoyé aux administrateurs de SaveInTeam.
      */
     public function action_500() {
-        
     }
 
     public function after() {
-
-        View::set_global("title", $this->title);
-        View::set_global("description", $this->description);
-        View::set_global("keywords", $this->keywords);
-
         $this->template->content = $this->content;
         $this->content->title = $this->title;
-        $this->content->description = $this->description;
+        $this->content->message = $this->message;
         parent::after();
     }
 

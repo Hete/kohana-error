@@ -26,7 +26,7 @@ class Kohana_Exception extends Kohana_Kohana_Exception {
 
             $params = array(
                 'action' => 500,
-                'message' => rawurlencode($e->getMessage())
+                'description' => rawurlencode($e->getMessage())
             );
 
             if ($e instanceof HTTP_Exception) {
