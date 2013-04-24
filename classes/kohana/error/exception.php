@@ -12,10 +12,10 @@ defined('SYSPATH') or die('No direct access');
  * @author Hète.ca Team
  * @copyright (c) 2013, Hète.ca Inc.
  */
-class Kohana_Exception extends Kohana_Kohana_Exception {
+class Kohana_Error_Exception extends Kohana_Kohana_Exception {
 
     public static function handler(Exception $e) {
-
+        
         if (Kohana::$environment === Kohana::DEVELOPMENT) {
             return parent::handler($e);
         }

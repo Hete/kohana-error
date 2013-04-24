@@ -11,6 +11,8 @@ defined('SYSPATH') or die('No direct access');
  * @copyright (c) 2013, Hète.ca Inc.
  */
 class Kohana_Controller_Error extends Controller_Template {
+    
+    public $template = "template/error";
 
     /**
      * Metas
@@ -78,8 +80,7 @@ class Kohana_Controller_Error extends Controller_Template {
         View::set_global("keywords", $this->keywords);
 
         $this->template->content = $this->content;
-        $this->content->title = $this->title;
-        $this->content->description = $this->description;
+        
         parent::after();
     }
 
