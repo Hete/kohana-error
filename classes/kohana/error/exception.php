@@ -15,8 +15,13 @@ defined('SYSPATH') or die('No direct access');
 class Kohana_Error_Exception extends Kohana_Kohana_Exception {
 
     public static function handler(Exception $e) {
-        
+
         if (Kohana::$environment === Kohana::DEVELOPMENT) {
+            return parent::handler($e);
+        }
+
+        // Must be the initial request, showing error message on external request is dangerous
+        if (Request::initial() !== Request::current()) {
             return parent::handler($e);
         }
 
