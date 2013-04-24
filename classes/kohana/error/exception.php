@@ -18,12 +18,7 @@ class Kohana_Error_Exception extends Kohana_Kohana_Exception {
 
         if (Kohana::$environment === Kohana::DEVELOPMENT) {
             return parent::handler($e);
-        }
-
-        // Must be the initial request, showing error message on external request is dangerous
-        if (Request::initial() !== Request::current()) {
-            return parent::handler($e);
-        }
+        }      
 
         Kohana::$log->add(Log::ERROR, parent::text($e));
 
