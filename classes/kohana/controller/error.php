@@ -18,7 +18,7 @@ class Kohana_Controller_Error extends Controller_Template {
      * Metas
      * @var type 
      */
-    protected $title, $description, $keywords;
+    protected $title, $author, $description, $keywords = array();
 
     /**
      *
@@ -76,6 +76,7 @@ class Kohana_Controller_Error extends Controller_Template {
     public function after() {
 
         View::set_global("title", $this->title);
+        View::set_global("author", $this->author);
         View::set_global("description", $this->description);
         View::set_global("keywords", $this->keywords);
 
