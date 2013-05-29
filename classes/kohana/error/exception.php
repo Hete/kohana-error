@@ -17,7 +17,7 @@ class Kohana_Error_Exception extends Kohana_Kohana_Exception {
     public static function handler(Exception $e) {
 
         // Display regular trace in development
-        if (Kohana::$environment === Kohana::DEVELOPMENT) {
+        if (Kohana::$environment !== Kohana::PRODUCTION) {
             return parent::handler($e);
         }        
         
