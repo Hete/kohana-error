@@ -2,10 +2,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title><?php echo $title ?></title>
+        <title><?php echo __($title) ?></title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="description" value="<?php echo $description ?>"/>
-        <meta name="keywords" value="<?php echo $keywords ?>"/>
+        <meta name="author" value="<?php echo __($author) ?>"/>
+        <meta name="description" value="<?php echo __($description) ?>"/>
+        <meta name="keywords" value="<?php echo implode(', ', $keywords) ?>"/>
     </head>
     <body>
         <?php echo $content ?>

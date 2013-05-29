@@ -4,11 +4,12 @@
 
 <p><?php echo __($description) ?></p>
 
-<h3>Vous pouvez toujours essayer les options suivantes</h3>
+<h3><?php echo __('error.whattodo') ?></h3>
 
-<div class="control-group">
-    <?php echo Bootstrap::button("Retourner sur l'accueil", NULL, "") ?>
-    <?php echo Bootstrap::button("Retourner ou vous étiez", NULL, Request::initial()->uri(), "warning") ?>
-</div>
+<ul>
+    <li><?php echo HTML::anchor('', __('error.gohome')) ?></li>
+    <li><?php echo HTML::anchor(Request::initial()->uri(), __('error.startover')) ?></li>
+</ul>
+
 
 

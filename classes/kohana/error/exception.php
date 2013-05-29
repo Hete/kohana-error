@@ -16,12 +16,11 @@ class Kohana_Error_Exception extends Kohana_Kohana_Exception {
 
     public static function handler(Exception $e) {
 
+        // Display regular trace in development
         if (Kohana::$environment === Kohana::DEVELOPMENT) {
             return parent::handler($e);
-        }      
-
-        Kohana::$log->add(Log::ERROR, parent::text($e));
-
+        }        
+        
         try {
 
             $params = array(
