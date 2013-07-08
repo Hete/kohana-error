@@ -40,6 +40,14 @@ class Kohana_Controller_Error extends Controller_Template_Error {
         
     }
 
+    public function after() {
+
+        // Update status
+        $this->response->status((int) $this->request->action());
+
+        parent::after();
+    }
+
 }
 
 ?>
