@@ -19,8 +19,8 @@ class Kohana_Error_Exception extends Kohana_Kohana_Exception {
         // Display regular trace in development
         if (Kohana::$environment !== Kohana::PRODUCTION) {
             return parent::handler($e);
-        }        
-        
+        }
+
         try {
 
             $params = array(
@@ -35,6 +35,7 @@ class Kohana_Error_Exception extends Kohana_Kohana_Exception {
             // Error sub-request.
             echo Request::factory(Route::get('error')->uri($params))
                     ->execute()
+                    ->status($params['action'])
                     ->send_headers()
                     ->body();
         } catch (Exception $e) {

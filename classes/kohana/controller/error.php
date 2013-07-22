@@ -14,8 +14,19 @@ class Kohana_Controller_Error extends Controller_Template_Error {
 
     /**
      * Not authorized
+     * 
+     * You have to authenticate to access this resource.
      */
     public function action_401() {
+        
+    }
+
+    /**
+     * Forbidden
+     * 
+     * Authentication will not change anything.
+     */
+    public function action_403() {
         
     }
 
@@ -38,14 +49,6 @@ class Kohana_Controller_Error extends Controller_Template_Error {
      */
     public function action_500() {
         
-    }
-
-    public function after() {
-
-        // Update status
-        $this->response->status((int) $this->request->action());
-
-        parent::after();
     }
 
 }
