@@ -4,11 +4,15 @@
     <head>
         <title><?php echo __($title) ?></title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="author" value="<?php echo __($author) ?>"/>
         <meta name="description" value="<?php echo __($description) ?>"/>
-        <meta name="keywords" value="<?php echo implode(', ', $keywords) ?>"/>
     </head>
     <body>
-        <?php echo $content ?>
+        <h2><?php echo __($title) ?></h2>
+        <p><?php echo __($description) ?></p>
+        <h3><?php echo __('error.whattodo') ?></h3>
+        <ul>
+            <li><?php echo HTML::anchor('', __('error.gohome')) ?></li>
+            <li><?php echo HTML::anchor(Request::initial()->uri(), __('error.startover')) ?></li>
+        </ul>
     </body>
 </html>

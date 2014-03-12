@@ -3,16 +3,16 @@
 defined('SYSPATH') or die('No direct access');
 
 /**
- * Custom exception handler.
+ * Redefines Kohana_Exception
  * 
  * Copy this file in your own app folder.
  * 
- * @package Error
- * @category Exception
- * @author Hète.ca Team
+ * @package    Error
+ * @category   Exceptions
+ * @author     Hète.ca Team
  * @copyright (c) 2013, Hète.ca Inc.
  */
-class Kohana_Error_Exception extends Kohana_Kohana_Exception {
+class Kohana_Exception extends Kohana_Kohana_Exception {
 
     public static function handler(Exception $e) {
 
@@ -38,6 +38,7 @@ class Kohana_Error_Exception extends Kohana_Kohana_Exception {
                     ->status($params['action'])
                     ->send_headers()
                     ->body();
+            
         } catch (Exception $e) {
             // Clean the output buffer if one exists
             ob_get_level() and ob_clean();
@@ -51,5 +52,3 @@ class Kohana_Error_Exception extends Kohana_Kohana_Exception {
     }
 
 }
-
-?>
