@@ -1,0 +1,23 @@
+{
+    "name": "kohana/error",
+    "description": "Error handler for production stage",
+    "homepage": "http://github.com/Hete/kohana-error",
+    "license": "BSD-3-Clause",
+    "keywords": ["kohana", "framework", "error"],
+    "authors": [
+        {
+            "name": "Guillaume Poirier-Morency",
+            "email": "guillaumepoiriermorency@gmail.com",
+            "homepage": "https://github.com/arteymix",
+            "role": "developer"
+        }
+    ],
+    "support": {
+        "issues": "http://github.com/Hete/kohana-error/issues",
+        "source": "http://github.com/Hete/kohana-error"
+    },
+    "require": {
+        "kohana/core": ">=3.3",
+        "php": ">=5.3.3"
+    }
+}
