@@ -3,37 +3,33 @@
 defined('SYSPATH') or die('No direct access');
 
 /**
- * Contrôlleur pour gérer les exceptions en mode de production.
+ * Handles HTTP exceptions in production environment.
  *
- * @package Error
- * @category Controllers
- * @author Hète.ca Team
+ * @package   Error
+ * @category  Controllers
+ * @author    Hète.ca Team
  * @copyright (c) 2013, Hète.ca Inc.
  */
 class Kohana_Controller_Error extends Controller_Template {
 
     /**
-     *
+     * Override this template on need.
+     * 
      * @var View
      */
     public $template = 'template/error';
 
-    public function before() {
-
-        parent::before();
+    public function after() {
 
         // Custom title
-        $this->template->title = 'error.' . (int) $this->request->action() . '.title';
+        $this->template->code = $this->request->action();
 
         // Default message is based on error status
-        $this->template->description = 'error.' . (int) $this->request->action() . '.message';
-
-        // Take description from param if available
-        if ($description = rawurldecode($this->request->param('description'))) {
-            $this->template->description = $description;
-        }
+        $this->template->message = $this->request->query('message');
 
         $this->response->status((int) $this->request->action());
+
+        parent::after();
     }
 
     /**
