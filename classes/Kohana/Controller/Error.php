@@ -19,15 +19,25 @@ class Kohana_Controller_Error extends Controller_Template {
      */
     public $template = 'template/error';
 
+    /**
+     * Error that occured.
+     * 
+     * @var HTTP_Exception
+     */
+    public $exception;
+
+    public function before() {
+
+        parent::before();
+
+        $this->exception = unserialize($this->request->query('exception'));
+    }
+
     public function after() {
 
-        // Custom title
-        $this->template->code = $this->request->action();
+        $this->template->exception = $this->exception;
 
-        // Default message is based on error status
-        $this->template->message = $this->request->query('message');
-
-        $this->response->status((int) $this->request->action());
+        $this->response->status($this->exception->getCode());
 
         parent::after();
     }
@@ -58,16 +68,16 @@ class Kohana_Controller_Error extends Controller_Template {
     }
 
     /**
-     * Service Unavailable.
+     * Internal Server Error.
      */
-    public function action_503() {
+    public function action_500() {
         
     }
 
     /**
-     * Internal Server Error.
+     * Service Unavailable.
      */
-    public function action_500() {
+    public function action_503() {
         
     }
 

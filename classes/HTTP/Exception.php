@@ -20,7 +20,7 @@ class HTTP_Exception extends Kohana_HTTP_Exception {
             ));
 
             return Request::factory($uri)
-                            ->query('message', $this->getMessage())
+                            ->query('exception', serialize($this))
                             ->execute();
         }
 
