@@ -7,7 +7,7 @@ defined('SYSPATH') or die('No direct access');
  * 
  * @package Error
  * @author  Guillaume Poirier-Morency <guillaumepoiriermorency@gmail.com>
- * @license BSD 3 clasusj
+ * @license BSD 3 clauses
  */
 class HTTP_Exception extends Kohana_HTTP_Exception {
 
