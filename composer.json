@@ -1,5 +1,6 @@
 {
     "name": "kohana/error",
+    "type": "kohana/module",
     "description": "Error handler for production stage",
     "homepage": "http://github.com/Hete/kohana-error",
     "license": "BSD-3-Clause",
