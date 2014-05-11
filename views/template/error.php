@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title><?php echo $exception->getCode() ?> - Page not found</title>
+        <title><?php echo $exception->getCode() ?> - <?php __('error.' . $exception->getCode() . '.title') ?></title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="description" value="<?php echo $exception->getMessage() ?>"/>
+        <meta name="description" content="<?php echo $exception->getMessage() ?>"/>
     </head>
     <body>
-        <h2><?php echo $exception->getCode() ?> - Page not found</h2>
+        <h1><?php echo $exception->getCode() ?> - <?php __('error.' . $exception->getCode() . '.title') ?></h1>
         <p><?php echo $exception->getMessage() ?></p>
     </body>
 </html>

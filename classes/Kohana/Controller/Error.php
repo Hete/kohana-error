@@ -22,7 +22,7 @@ class Kohana_Controller_Error extends Controller_Template {
     /**
      * Error that occured.
      * 
-     * @var HTTP_Exception
+     * @var \HTTP_Exception
      */
     public $exception;
 
@@ -31,15 +31,6 @@ class Kohana_Controller_Error extends Controller_Template {
         parent::before();
 
         $this->exception = unserialize($this->request->query('exception'));
-    }
-
-    public function after() {
-
-        $this->template->exception = $this->exception;
-
-        $this->response->status($this->exception->getCode());
-
-        parent::after();
     }
 
     /**
@@ -79,6 +70,15 @@ class Kohana_Controller_Error extends Controller_Template {
      */
     public function action_503() {
         
+    }
+
+    public function after() {
+
+        $this->template->exception = $this->exception;
+
+        $this->response->status($this->exception->getCode());
+
+        parent::after();
     }
 
 }
