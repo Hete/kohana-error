@@ -1,6 +1,6 @@
 <?php
 
-defined('SYSPATH') or die('No direct access');
+defined('SYSPATH') OR die('No direct access');
 
 /**
  * Handles HTTP exceptions in production environment.
@@ -26,8 +26,8 @@ class Kohana_Controller_Error extends Controller_Template {
      */
     public $exception;
 
-    public function before() {
-
+    public function before() 
+				{
         parent::before();
 
         $this->exception = unserialize($this->request->query('exception'));
@@ -38,42 +38,47 @@ class Kohana_Controller_Error extends Controller_Template {
      * 
      * You have to authenticate to access this resource.
      */
-    public function action_401() {
-        
-    }
+    public function action_401() 
+				{ 
+
+				}
 
     /**
      * Forbidden
      * 
      * Authentication will not change anything.
      */
-    public function action_403() {
-        
-    }
+    public function action_403() 
+				{
+				
+				}
 
     /**
      * Not Found.
      */
-    public function action_404() {
-        
-    }
+    public function action_404() 
+				{ 
+				
+				}
 
     /**
      * Internal Server Error.
      */
-    public function action_500() {
-        
-    }
+    public function action_500() 
+				{ 
+								
+				}
 
     /**
      * Service Unavailable.
      */
-    public function action_503() {
-        
-    }
+    public function action_503() 
+				{
 
-    public function after() {
+				}
 
+    public function after() 
+				{
         $this->template->exception = $this->exception;
 
         $this->response->status($this->exception->getCode());

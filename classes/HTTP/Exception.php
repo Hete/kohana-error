@@ -1,6 +1,6 @@
 <?php
 
-defined('SYSPATH') or die('No direct access');
+defined('SYSPATH') OR die('No direct access');
 
 /**
  * Overrides HTTP_Exception to handle custom error page.
@@ -11,10 +11,10 @@ defined('SYSPATH') or die('No direct access');
  */
 class HTTP_Exception extends Kohana_HTTP_Exception {
 
-    public function get_response() {
-
-        if (Kohana::$environment === Kohana::PRODUCTION) {
-
+    public function get_response() 
+				{
+								if (Kohana::$environment === Kohana::PRODUCTION) 
+								{
             $uri = Route::get('error')->uri(array(
                 'action' => $this->getCode()
             ));
