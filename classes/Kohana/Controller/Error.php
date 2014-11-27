@@ -12,78 +12,78 @@ defined('SYSPATH') OR die('No direct access');
  */
 class Kohana_Controller_Error extends Controller_Template {
 
-    /**
-     * Override this template on need.
-     * 
-     * @var View
-     */
-    public $template = 'template/error';
+	/**
+	 * Override this template on need.
+	 *
+	 * @var View
+	 */
+	public $template = 'template/error';
 
-    /**
-     * Error that occured.
-     * 
-     * @var \HTTP_Exception
-     */
-    public $exception;
+	/**
+	 * Error that occured.
+	 *
+	 * @var \HTTP_Exception
+	 */
+	public $exception;
 
-    public function before() 
-				{
-        parent::before();
+	public function before()
+	{
+		parent::before();
 
-        $this->exception = unserialize($this->request->query('exception'));
-    }
+		$this->exception = unserialize($this->request->query('exception'));
+	}
 
-    /**
-     * Not authorized
-     * 
-     * You have to authenticate to access this resource.
-     */
-    public function action_401() 
-				{ 
+	/**
+	 * Not authorized
+	 *
+	 * You have to authenticate to access this resource.
+	 */
+	public function action_401()
+	{
 
-				}
+	}
 
-    /**
-     * Forbidden
-     * 
-     * Authentication will not change anything.
-     */
-    public function action_403() 
-				{
-				
-				}
+	/**
+	 * Forbidden
+	 *
+	 * Authentication will not change anything.
+	 */
+	public function action_403()
+	{
 
-    /**
-     * Not Found.
-     */
-    public function action_404() 
-				{ 
-				
-				}
+	}
 
-    /**
-     * Internal Server Error.
-     */
-    public function action_500() 
-				{ 
-								
-				}
+	/**
+	 * Not Found.
+	 */
+	public function action_404()
+	{
 
-    /**
-     * Service Unavailable.
-     */
-    public function action_503() 
-				{
+	}
 
-				}
+	/**
+	 * Internal Server Error.
+	 */
+	public function action_500()
+	{
 
-    public function after() 
-				{
-        $this->template->exception = $this->exception;
+	}
 
-        $this->response->status($this->exception->getCode());
+	/**
+	 * Service Unavailable.
+	 */
+	public function action_503()
+	{
 
-        parent::after();
-    }
+	}
+
+	public function after()
+	{
+		$this->template->exception = $this->exception;
+
+		$this->response->status($this->exception->getCode());
+
+		parent::after();
+	}
 
 }
