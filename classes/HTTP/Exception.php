@@ -13,19 +13,13 @@ class HTTP_Exception extends Kohana_HTTP_Exception {
 
 	public function get_response()
 	{
-		if (Kohana::$environment === Kohana::PRODUCTION)
+		if ( ! Kohana::$errors)
 		{
 			$uri = Route::get('error')->uri(array('action' => $this->getCode()));
 
 			return Request::factory($uri)
 				->query('exception', serialize($this))
-				->execute();
-		}
-
-		if (Kohana::$environment === Kohana::TESTING)
-		{
-			return Response::factory()
-				->body(self::text($this))
+				->execute()
 				->status($this->getCode());
 		}
 

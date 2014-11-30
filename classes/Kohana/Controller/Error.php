@@ -81,8 +81,6 @@ class Kohana_Controller_Error extends Controller_Template {
 	{
 		$this->template->exception = $this->exception;
 
-		$this->response->status($this->exception->getCode());
-
 		parent::after();
 	}
 
