@@ -1,6 +1,4 @@
-<?php
-
-defined('SYSPATH') OR die('No direct access');
+<?php defined('SYSPATH') OR die('No direct access');
 
 /**
  * Handles HTTP exceptions in production environment.
